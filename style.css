@@ -184,66 +184,100 @@ body::before {
 /* ==========================================
    OPTIMISATION MOBILE (Écrans de moins de 768px)
    ========================================== */
+/* ==========================================
+   AFFICHAGE SIMPLIFIÉ ET COMPACT POUR MOBILE
+   ========================================== */
 @media screen and (max-width: 768px) {
     
-    /* 1. Ajustement global des espacements */
     main {
-        padding: 10px;
+        padding: 12px;
     }
 
     .main-title {
-        font-size: 3rem; /* Titre un peu plus petit pour ne pas couper */
+        font-size: 2.5rem;
+        margin-bottom: 5px;
     }
 
-    /* 2. Barre de navigation en liste verticale ou défilante */
+    .sub-title {
+        font-size: 1.1rem;
+    }
+
+    /* 1. Boutons du Hero plus compacts */
+    .hero-buttons {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    
+    .hero-buttons .btn-main, 
+    .hero-buttons .btn-secondary {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+        flex: 1;
+        max-width: 160px;
+        text-align: center;
+    }
+
+    /* 2. Menu de navigation en Grille (2 par ligne) - Fini la liste infinie ! */
     .navbar {
-        flex-direction: column; /* Aligne les boutons les uns sous les autres */
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
         gap: 8px;
-        width: 100%;
-        padding: 0 10px;
-    }
-
-    .nav-item {
-        width: 100%;
+        padding: 0;
     }
 
     .nav-item a {
         display: block;
         text-align: center;
-        padding: 12px;
-        width: 100%;
+        padding: 10px;
+        font-size: 0.9rem;
+        border-radius: 6px;
     }
 
-    /* 3. Ajustement de la boîte des réseaux sociaux */
+    /* 3. Réseaux Sociaux ultra simplifiés en Grille (2 par ligne, YouTube prend tout le bas) */
     .social-glass-box {
-        flex-direction: column; /* Les cartes passent les unes sous les autres */
-        gap: 12px;
-        padding: 15px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 10px;
     }
 
     .social-card {
-        width: 100%; /* Chaque réseau prend toute la largeur sur mobile */
-        justify-content: space-between;
-        padding: 12px 20px;
+        padding: 10px;
+        justify-content: center;
+        gap: 8px;
+        font-size: 0.9rem;
     }
 
-    /* 4. Grille des vidéos (YouTube & Twitch l'une sous l'autre) */
+    /* Force le dernier réseau (YouTube) à prendre toute la largeur pour rester équilibré */
+    .social-card:last-child {
+        grid-column: span 2;
+    }
+
+    /* 4. Grille des vidéos (Une par une verticalement) */
     .media-grids {
         display: flex;
-        flex-direction: column; /* Force le mode vertical au lieu d'avoir 2 colonnes */
-        gap: 20px;
+        flex-direction: column;
+        gap: 15px;
     }
 
     .video-container {
         width: 100%;
     }
 
-    /* Rend l'iframe parfaitement proportionnelle en 16:9 sur smartphone */
+    .video-title {
+        font-size: 1rem;
+        margin-top: 5px;
+    }
+
+    /* Ratio 16:9 parfait et fluide pour les lecteurs */
     .video-responsive {
         position: relative;
-        padding-bottom: 56.25%; /* Ratio 16:9 */
+        padding-bottom: 56.25%;
         height: 0;
         overflow: hidden;
+        border-radius: 8px;
     }
 
     .video-responsive iframe {
