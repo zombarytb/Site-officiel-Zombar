@@ -190,15 +190,19 @@ body::before {
 /* ==========================================
    AFFICHAGE ULTRA SIMPLE & MENU DÉROULANT MOBILE
    ========================================== */
+/* ==========================================
+   AFFICHAGE MOBILE ET MENU DÉROULANT EN HAUT
+   ========================================== */
 @media screen and (max-width: 768px) {
     
-    /* 1. Réduction générale de la police */
+    /* 1. Réduction globale de la police et marges */
     html, body {
-        font-size: 14px; /* Baisse la taille globale */
+        font-size: 14px;
     }
 
     main {
         padding: 10px;
+        margin-top: 60px; /* Crée un espace pour que le menu du haut ne cache pas ton logo */
     }
 
     .main-title {
@@ -210,7 +214,7 @@ body::before {
         margin-bottom: 15px;
     }
 
-    /* 2. Boutons d'accueil plus petits */
+    /* 2. Boutons d'accueil plus compacts */
     .hero-buttons {
         gap: 8px;
         margin-bottom: 15px;
@@ -222,44 +226,51 @@ body::before {
         font-size: 0.85rem;
     }
 
-    /* 3. SYSTÈME DE MENU DÉROULANT (CSS Pur) */
+    /* 3. PROPULSION DU MENU TOUT EN HAUT DE L'ÉCRAN */
     .navbar-container {
-        position: relative;
-        margin-bottom: 20px;
+        position: fixed; /* Fixe le menu en haut, même quand on scroll ! */
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 9999; /* Reste toujours au-dessus du reste du site */
+        padding: 8px;
+        background: rgba(15, 15, 15, 0.9); /* Fond sombre semi-transparent */
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        margin-bottom: 0;
     }
 
-    /* On transforme le container du menu en zone déroulante tactile */
-    .navbar {
-        display: none; /* Cache le menu par défaut */
-        flex-direction: column;
-        gap: 5px;
-        padding: 10px;
-        background: rgba(20, 20, 20, 0.95);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 8px;
-        backdrop-filter: blur(10px);
-    }
-
-    /* Création du bouton "MENU ☰" en CSS */
+    /* Le bouton MENU ☰ en haut au centre */
     .navbar-container::before {
         content: "☰ MENU";
         display: block;
         text-align: center;
-        padding: 10px;
+        padding: 8px;
         background: rgba(255, 255, 255, 0.05);
         border: 1px solid rgba(255, 255, 255, 0.1);
         color: #fff;
         font-weight: 700;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         border-radius: 6px;
         cursor: pointer;
-        margin-bottom: 5px;
     }
 
-    /* L'ACTION MAGIQUE : Quand on survole ou clique (tactile) sur le bloc, le menu se déroule */
+    /* Le menu qui se déroule juste en dessous du bouton */
+    .navbar {
+        display: none; 
+        flex-direction: column;
+        gap: 5px;
+        padding: 10px;
+        background: rgba(20, 20, 20, 0.98);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 6px;
+        margin-top: 5px;
+    }
+
+    /* Action au clic/tactile pour dérouler */
     .navbar-container:hover .navbar,
     .navbar-container:active .navbar {
-        display: flex; /* Affiche le menu déroulant */
+        display: flex; 
     }
 
     .nav-item a {
@@ -269,7 +280,7 @@ body::before {
         text-align: center;
     }
 
-    /* 4. Réseaux Sociaux en mini-grille (Très compacts) */
+    /* 4. Réseaux Sociaux en mini-grille */
     .social-glass-box {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
