@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>BeamNG.drive - Zombar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Urbanist:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Styles spécifiques pour le Podium */
+        .podium-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 20px;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 10px;
+        }
+        .podium-step {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 25px 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .podium-step:hover {
+            transform: translateY(-5px);
+            border-color: var(--zombar-yellow);
+        }
+        /* Différences de hauteurs pour l'effet marche du podium */
+        .step-1 { 
+            order: 2; 
+            min-height: 320px; 
+            border-color: rgba(255, 215, 0, 0.3); /* Or */
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.05);
+        }
+        .step-2 { 
+            order: 1; 
+            min-height: 280px; 
+            border-color: rgba(192, 192, 192, 0.3); /* Argent */
+        }
+        .step-3 { 
+            order: 3; 
+            min-height: 260px; 
+            border-color: rgba(205, 127, 50, 0.3); /* Bronze */
+        }
+        .rank-badge {
+            font-family: 'Permanent Marker', sans-serif;
+            font-size: 32px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .step-1 .rank-badge { color: #ffd700; }
+        .step-2 .rank-badge { color: #c0c0c0; }
+        .step-3 .rank-badge { color: #cd7f32; }
+        
+        /* Bouton de DL miniature pour le podium */
+        .btn-podium {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-family: 'Urbanist', sans-serif;
+        }
+        .step-1 .btn-podium { background: #ffd700; color: #111; }
+        .step-2 .btn-podium { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
+        .step-3 .btn-podium { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
+        
+        .btn-podium:hover { opacity: 0.9; transform: scale(1.03); }
+
+        @media (max-width: 600px) {
+            .podium-container { flex-direction: column; align-items: stretch; }
+            .step-1 { order: 1; min-height: auto; }
+            .step-2 { order: 2; min-height: auto; }
+            .step-3 { order: 3; min-height: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Effets lumineux d'ambiance -->
+    <div class="glow-overlay">
+        <div class="glow-green"></div>
+        <div class="glow-orange"></div>
+        <div class="glow-blue"></div>
+    </div>
+
+    <!-- Navbar -->
+    <div class="navbar-container">
+        <nav>
+            <ul class="navbar">
+                <li class="nav-item"><a href="index.html">Accueil</a></li>
+                <li class="nav-item"><a href="jeux.html">Jeux</a></li>
+                <li class="nav-item"><a href="planning.html">Planning</a></li>
+                <li class="nav-item"><a href="setup.html">Setup</a></li>
+                <li class="nav-item"><a href="beamng.html" style="background: var(--beamng-orange); color: var(--dark-bg);">BeamNG</a></li>
+                <li class="nav-item"><a href="suggestions.html">Contact</a></li>
+                <li class="nav-item"><a href="boutique.html">Boutique</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main>
+        <h1 class="page-title">BeamNG.drive</h1>
+
+        <!-- Présentation du jeu centrée -->
+        <div class="page-content" style="margin-bottom: 50px;">
+            <p class="page-text" style="font-size: 20px; font-style: italic; margin-bottom: 30px;">
+                "BeamNG.drive est un jeu de conduite incroyablement réaliste aux possibilités quasi infinies. Notre moteur physique « soft-body » simule chaque composant d'un véhicule en temps réel, ce qui permet d'obtenir un résultat fidèle à la réalité."
+            </p>
+
+            <!-- Zone des boutons Steam et Site Officiel -->
+            <div class="hero-buttons" style="margin-bottom: 0;">
+                <a href="https://store.steampowered.com/app/284160/BeamNGdrive/" target="_blank" class="btn-secondary" style="border-color: var(--steam-blue);">
+                    <i class="fab fa-steam"></i> Page Steam
+                </a>
+                <a href="https://www.beamng.com/" target="_blank" class="btn-main" style="background: var(--beamng-orange); color: #fff;">
+                    <i class="fas fa-globe"></i> Site Officiel
+                </a>
+            </div>
+        </div>
+
+        <!-- SECTION DE TES CONTENUS (YOUTUBE & TIKTOK) -->
+        <section class="media-section" style="margin-bottom: 50px;">
+            <div class="media-grids">
+                
+                <!-- Bloc YouTube -->
+                <div class="video-container">
+                    <div class="video-responsive">
+                        <iframe src="https://www.youtube.com/embed/VHjohIcLGvQ" title="Dernière vidéo YouTube Zombar" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-title">
+                        <i class="fab fa-youtube" style="color: #FF0000; margin-right: 8px;"></i> Dernière Vidéo YouTube
+                    </div>
+                </div>
+
+                <!-- Bloc TikTok -->
+                <div class="video-container">
+                    <div class="video-responsive">
+                        <iframe src="https://www.tiktok.com/player/v1/7652462039939517718?music_info=1&description=1" title="Dernier TikTok Zombar" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-title">
+                        <i class="fab fa-tiktok" style="color: #00f2fe; margin-right: 8px;"></i> Dernier TikTok
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ENCADRÉ : MOD DE LA SEMAINE -->
+        <section class="mod-section" style="max-width: 800px; margin: 0 auto 60px auto;">
+            <h2 style="font-family: 'Permanent Marker', sans-serif; text-align: center; color: var(--zombar-yellow); font-size: 28px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px;">
+                🎯 Mod de la semaine
+            </h2>
+            <div class="page-content" style="margin-top: 0; padding: 35px; border-color: rgba(255, 102, 0, 0.2);">
+                <h3 style="font-size: 22px; color: #fff; margin-bottom: 15px;">Road Speed Signs</h3>
+                <p class="page-text" style="font-size: 16px; margin-bottom: 25px; color: rgba(255,255,255,0.7);">
+                    Ajoute un réalisme incroyable à tes sessions de conduite et à tes scénarios de poursuite ou de RP ! Ce mod intègre des panneaux de signalisation et de limitation de vitesse ultra-détaillés sur les routes pour une immersion totale.
+                </p>
+                <a href="https://www.beamng.com/resources/road-speed-signs.37788/" target="_blank" class="btn-main" style="background: var(--beamng-orange); color: #fff; display: inline-flex; align-items: center; gap: 10px; padding: 12px 30px;">
+                    <i class="fas fa-download"></i> Télécharger le Mod
+                </a>
+            </div>
+        </section>
+
+        <!-- SECTION : LE PODIUM DES MODS PRÉFÉRÉS -->
+        <section class="podium-section" style="margin-bottom: 60px;">
+            <h2 style="font-family: 'Permanent Marker', sans-serif; text-align: center; color: #fff; font-size: 28px; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px;">
+                🏆 Top Mods Recommandés
+            </h2>
+            <p style="text-align: center; color: rgba(255,255,255,0.6); margin-bottom: 30px; font-family: 'Urbanist', sans-serif;">Les trois pépites indispensables selon moi pour transformer ton jeu.</p>
+            
+            <div class="podium-container">
+                
+                <!-- 2ÈME PLACE (À gauche sur PC) -->
+                <div class="podium-step step-2">
+                    <div>
+                        <span class="rank-badge">2</span>
+                        <h3 style="color: #fff; font-size: 18px; margin-bottom: 10px;">Nom du Mod #2</h3>
+                        <p style="color: rgba(255,255,255,0.6); font-size: 14px;">Petite description rapide du mod et de pourquoi il déchire tout.</p>
+                    </div>
+                    <a href="#" target="_blank" class="btn-podium"><i class="fas fa-download"></i> Télécharger</a>
+                </div>
+
+                <!-- 1ÈRE PLACE (Au centre, le plus haut) -->
+                <div class="podium-step step-1">
+                    <div>
+                        <span class="rank-badge">1</span>
+                        <h3 style="color: #fff; font-size: 20px; margin-bottom: 10px;">Nom du Mod #1</h3>
+                        <p style="color: rgba(255,255,255,0.6); font-size: 14px;">Le mod ultime, le plus indispensable de toute ta collection de joueur.</p>
+                    </div>
+                    <a href="#" target="_blank" class="btn-podium"><i class="fas fa-download"></i> Télécharger</a>
+                </div>
+
+                <!-- 3ÈME PLACE (À droite sur PC) -->
+                <div class="podium-step step-3">
+                    <div>
+                        <span class="rank-badge">3</span>
+                        <h3 style="color: #fff; font-size: 18px; margin-bottom: 10px;">Nom du Mod #3</h3>
+                        <p style="color: rgba(255,255,255,0.6); font-size: 14px;">Une excellente alternative ou un ajout fun qui complète parfaitement le jeu.</p>
+                    </div>
+                    <a href="#" target="_blank" class="btn-podium"><i class="fas fa-download"></i> Télécharger</a>
+                </div>
+
+            </div>
+        </section>
+        
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact & Suggestions - Zombar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Urbanist:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Styles spécifiques pour le formulaire de contact */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-align: left;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .form-group label {
+            font-family: 'Urbanist', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .form-group input, .form-group textarea {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 14px;
+            color: #fff;
+            font-family: 'Urbanist', sans-serif;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--zombar-yellow);
+            box-shadow: 0 0 10px rgba(255, 204, 0, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        #form-status {
+            text-align: center;
+            font-weight: 600;
+            margin-top: 15px;
+            font-family: 'Urbanist', sans-serif;
+        }
+        .status-success { color: #2ecc71; }
+        .status-error { color: #e74c3c; }
+
+        /* Séparateur pour la section privée */
+        .private-separator {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 40px 0 30px 0;
+            color: rgba(255, 255, 255, 0.3);
+            font-family: 'Urbanist', sans-serif;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .private-separator::before, .private-separator::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .private-separator:not(:empty)::before { margin-right: .5em; }
+        .private-separator:not(:empty)::after { margin-left: .5em; }
+    </style>
+</head>
+<body>
+
+    <!-- Effets lumineux d'ambiance -->
+    <div class="glow-overlay">
+        <div class="glow-green"></div>
+        <div class="glow-orange"></div>
+        <div class="glow-blue"></div>
+    </div>
+
+    <!-- Navbar -->
+    <div class="navbar-container">
+        <nav>
+            <ul class="navbar">
+                <li class="nav-item"><a href="index.html">Accueil</a></li>
+                <li class="nav-item"><a href="jeux.html">Jeux</a></li>
+                <li class="nav-item"><a href="planning.html">Planning</a></li>
+                <li class="nav-item"><a href="setup.html">Setup</a></li>
+                <li class="nav-item"><a href="beamng.html">BeamNG</a></li>
+                <li class="nav-item"><a href="suggestions.html" style="background: var(--zombar-yellow); color: var(--dark-bg);">Contact</a></li>
+                <li class="nav-item"><a href="boutique.html">Boutique</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main>
+        <h1 class="page-title">Me contacter</h1>
+
+        <div class="page-content" style="max-width: 650px; margin: 0 auto; padding: 40px;">
+            <p class="page-text" style="text-align: center; margin-bottom: 30px; color: rgba(255,255,255,0.7);">
+                Une idée de vidéo, une suggestion pour le site ou un message à me faire passer ? Remplis le formulaire ci-dessous et ça arrivera directement sur mon Discord !
+            </p>
+
+            <!-- Formulaire de contact HTML -->
+            <form id="discord-contact-form" class="contact-form">
+                <div class="form-group">
+                    <label for="username"><i class="fas fa-user" style="color: var(--zombar-yellow); margin-right: 5px;"></i> Ton Pseudo</label>
+                    <input type="text" id="username" placeholder="Ex: ZombarFan" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject"><i class="fas fa-heading" style="color: var(--zombar-yellow); margin-right: 5px;"></i> Objet du message</label>
+                    <input type="text" id="subject" placeholder="Ex: Idée de vidéo BeamNG / Bug sur le site" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message"><i class="fas fa-comment-alt" style="color: var(--zombar-yellow); margin-right: 5px;"></i> Ton message</label>
+                    <textarea id="message" placeholder="Développe ton idée ici..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-main" style="width: 100%; padding: 14px; font-size: 16px; margin-top: 10px;">
+                    <i class="fas fa-paper-plane"></i> Envoyer sur Discord
+                </button>
+            </form>
+
+            <!-- Zone d'affichage du succès ou de l'erreur Discord -->
+            <div id="form-status"></div>
+
+            <!-- SÉPARATEUR VISUEL -->
+            <div class="private-separator">Ou pour une demande importante</div>
+
+            <!-- BOUTON DE CONTACT PRIVÉ (EMAIL) -->
+            <div style="text-align: center;">
+                <p style="color: rgba(255,255,255,0.5); font-size: 14px; margin-bottom: 15px; font-family: 'Urbanist', sans-serif;">
+                    Partenariat, problème ou demande pro ? Contacte-moi directement en privé par mail.
+                </p>
+                <a href="mailto:zombarytb@gmail.com?subject=[Privé - Site Zombar]" class="btn-secondary" style="display: inline-flex; align-items: center; gap: 10px; padding: 12px 25px; border-color: rgba(255,255,255,0.2); width: 100%; justify-content: center; box-sizing: border-box;">
+                    <i class="fas fa-envelope" style="color: var(--zombar-yellow);"></i> Envoyer un Mail Privé
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Script JavaScript pour faire la liaison avec ton Webhook Discord -->
+    <script>
+        document.getElementById('discord-contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const webhookUrl = "https://discord.com/api/webhooks/1521165139649364119/4CUjpCxprfhOATF4KPfF8byZeq6_Kvgmpd_yu8mccO1apnopstRMFuB5L8qQheLaEnxT";
+            
+            const username = document.getElementById('username').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            const statusDiv = document.getElementById('form-status');
+
+            const discordData = {
+                username: "Zombar Website Bot",
+                avatar_url: "https://i.imgur.com/4M34gPo.png",
+                embeds: [{
+                    title: `📩 Nouveau message : ${subject}`,
+                    color: 16762880,
+                    fields: [
+                        { name: "👤 Pseudo de l'expéditeur", value: username, inline: true },
+                        { name: "📝 Message", value: message }
+                    ],
+                    footer: { text: "Envoyé depuis le site internet du Royaume" },
+                    timestamp: new Date()
+                }]
+            };
+
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(discordData)
+            })
+            .then(response => {
+                if (response.ok) {
+                    statusDiv.className = "status-success";
+                    statusDiv.innerHTML = "<i class='fas fa-check-circle'></i> Message envoyé avec succès au Royaume !";
+                    document.getElementById('discord-contact-form').reset();
+                } else {
+                    statusDiv.className = "status-error";
+                    statusDiv.innerHTML = "<i class='fas fa-exclamation-circle'></i> Erreur lors de l'envoi. Réessaye plus tard.";
+                }
+            })
+            .catch(error => {
+                statusDiv.className = "status-error";
+                statusDiv.innerHTML = "<i class='fas fa-exclamation-circle'></i> Impossible de joindre le serveur.";
+                console.error('Erreur:', error);
+            });
+        });
+    </script>
+
+</body>
+</html>

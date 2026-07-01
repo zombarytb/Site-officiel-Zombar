@@ -1,0 +1,18 @@
+{
+  "nextLiveDate": "Vendredi à 21h00 (Création de Mods & Automatisation)",
+  "counters": {
+    "twitch": "142",
+    "youtube": "385",
+    "tiktok": "291",
+    "discord": "64"
+  },
+  "weeklySchedule": [
+    { "day": "Lundi", "status": "offline", "text": "Développement hors-ligne & Optimisation système" },
+    { "day": "Mardi", "status": "offline", "text": "Maintenance des serveurs et configuration de modpacks" },
+    { "day": "Mercredi", "status": "live", "text": "LIVE 17h-20h : Découverte de mods d'automatisation" },
+    { "day": "Jeudi", "status": "offline", "text": "Repos des processeurs et veille technologique" },
+    { "day": "Vendredi", "status": "live", "text": "SOIRÉE HORREUR 21h : Survie hardcore sur serveur Crossplay" },
+    { "day": "Samedi", "status": "offline", "text": "Session dev / Gestion de projets web" },
+    { "day": "Dimanche", "status": "live", "text": "COMMUNAUTAIRE 15h : Événements abonnés & Mini-jeux" }
+  ]
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Boutique - Zombar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Urbanist:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Animation pour l'icône de chantier gratuite */
+        .construction-icon {
+            font-size: 80px;
+            color: #ff6600; /* Orange chantier */
+            margin-bottom: 25px;
+            animation: pulseGlow 2s infinite ease-in-out;
+            display: inline-block;
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(255, 102, 0, 0.4)); }
+            50% { transform: scale(1.05); filter: drop-shadow(0 0 20px rgba(255, 102, 0, 0.8)); }
+            100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(255, 102, 0, 0.4)); }
+        }
+
+        /* Style spécial pour le bouton Twitch */
+        .btn-twitch {
+            background: #9146FF;
+            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 30px;
+            border-radius: 8px;
+            font-family: 'Urbanist', sans-serif;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(145, 70, 255, 0.3);
+        }
+        .btn-twitch:hover {
+            background: #772ce8;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(145, 70, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Effets lumineux d'ambiance -->
+    <div class="glow-overlay">
+        <div class="glow-green"></div>
+        <div class="glow-orange"></div>
+        <div class="glow-blue"></div>
+    </div>
+
+    <!-- Navbar -->
+    <div class="navbar-container">
+        <nav>
+            <ul class="navbar">
+                <li class="nav-item"><a href="index.html">Accueil</a></li>
+                <li class="nav-item"><a href="jeux.html">Jeux</a></li>
+                <li class="nav-item"><a href="planning.html">Planning</a></li>
+                <li class="nav-item"><a href="setup.html">Setup</a></li>
+                <li class="nav-item"><a href="beamng.html">BeamNG</a></li>
+                <li class="nav-item"><a href="suggestions.html">Contact</a></li>
+                <li class="nav-item"><a href="boutique.html" style="background: var(--zombar-yellow); color: var(--dark-bg);">Boutique</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main>
+        <h1 class="page-title">Boutique</h1>
+
+        <div class="page-content" style="max-width: 650px; margin: 40px auto; padding: 50px 40px; text-align: center;">
+            
+            <!-- Icône de chantier gratuite et compatible -->
+            <div class="construction-icon">
+                <i class="fas fa-triangle-exclamation"></i>
+            </div>
+
+            <h2 style="font-family: 'Permanent Marker', sans-serif; color: #fff; font-size: 26px; margin-bottom: 20px; text-transform: uppercase;">
+                Boutique en projet
+            </h2>
+
+            <!-- Texte corrigé -->
+            <p class="page-text" style="font-size: 18px; line-height: 1.6; color: rgba(255,255,255,0.85); margin-bottom: 35px;">
+                Bonjour ! L'avenir de cette boutique vous appartient. En effet, j'ouvrirai cet espace si les réseaux me le permettent. <br><br>
+                Alors, vous savez ce qu'il vous reste à faire ! Lâchez un petit follow, c'est totalement gratuit et ça me fait super plaisir !
+            </p>
+
+            <!-- Bouton de redirection vers Twitch -->
+            <a href="https://twitch.tv/zombarytb" target="_blank" class="btn-twitch">
+                <i class="fab fa-twitch"></i> Me suivre sur Twitch
+            </a>
+
+        </div>
+    </main>
+
+</body>
+</html>
