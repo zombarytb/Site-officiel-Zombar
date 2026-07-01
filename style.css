@@ -322,3 +322,22 @@ body::before {
         font-size: 0.9rem;
     }
 }
+/* Ajustement et rangement de la signature sur mobile */
+    .signature-container {
+        padding: 5px 0;
+        margin-bottom: 0;
+        text-align: center;
+    }
+
+    .signature-img {
+        max-width: 140px; /* Réduit la taille pour qu'elle rentre proprement */
+        height: auto;
+        display: inline-block;
+        margin-top: 10px; /* Crée un petit espace sous la barre de menu fixe */
+    }
+
+    /* Décale légèrement le bloc logo vers le bas pour laisser de la place */
+    .logo-wrapper {
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
