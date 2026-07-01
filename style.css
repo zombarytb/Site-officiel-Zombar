@@ -88,6 +88,7 @@ body::before {
 .nav-item:nth-child(2) a:hover { background: var(--minecraft-green); box-shadow: 0 0 10px var(--minecraft-green); }
 .nav-item:nth-child(3) a:hover { background: var(--zombar-yellow); color: #000; box-shadow: 0 0 10px var(--zombar-yellow); }
 .nav-item:nth-child(5) a:hover { background: var(--beamng-orange); box-shadow: 0 0 10px var(--beamng-orange); }
+.nav-item:nth-child(7) a:hover { background: var(--zombar-yellow); color: #000; box-shadow: 0 0 10px var(--zombar-yellow); }
 
 /* =========================================
    5. PAGE ACCUEIL (TEXTES & BOUTONS)
@@ -95,7 +96,7 @@ body::before {
 .hero-text { text-align: center; margin-bottom: 50px; }
 .main-title { font-family: 'Permanent Marker', cursive; font-size: 90px; color: var(--zombar-yellow); letter-spacing: 2px; text-shadow: 0 5px 15px rgba(0,0,0,0.7); margin-top: 10px; }
 .sub-title { font-size: 24px; color: var(--text-muted); margin-top: 15px; font-weight: 500; }
-.page-title { font-size: 50px; font-family: 'Permanent Marker', cursive; color: var(--zombar-yellow); text-align: center; margin-bottom: 30px; }
+.page-title { font-size: 50px; font-family: 'Permanent Marker', cursive; color: var(--zombar-yellow); text-align: center; margin-bottom: 40px; }
 
 .hero-buttons { display: flex; gap: 25px; justify-content: center; margin-bottom: 80px; }
 .btn-main {
@@ -165,183 +166,98 @@ body::before {
    9. PAGES SIMPLES (SETUP, CONTACT, BOUTIQUE...)
 ========================================= */
 .page-content {
-    max-width: 800px;
-    margin: 40px auto;
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 24px;
-    padding: 50px;
-    text-align: center;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    max-width: 800px; margin: 40px auto; background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px; padding: 50px; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.3);
 }
+.page-text { font-size: 18px; line-height: 1.8; color: var(--text-muted); }
 
-.page-text {
-    font-size: 18px;
-    line-height: 1.8;
-    color: var(--text-muted);
+/* =========================================
+   10. PAGE PARTENAIRES (PC)
+========================================= */
+.partners-section { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+.partners-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 20px; }
+
+.partner-card { 
+    background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(10px); 
+    border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px; 
+    padding: 35px; text-align: center; transition: transform 0.3s ease, border-color 0.3s ease;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
 }
+.partner-card:hover { transform: translateY(-5px); border-color: var(--zombar-yellow); }
+
+.partner-avatar-wrapper { 
+    width: 120px; height: 120px; border-radius: 50%; overflow: hidden; 
+    margin: 0 auto 20px auto; border: 3px solid rgba(255, 255, 255, 0.2); 
+}
+.partner-avatar { width: 100%; height: 100%; object-fit: cover; }
+
+.partner-card h3 { font-family: 'Permanent Marker', cursive; color: var(--zombar-yellow); font-size: 26px; margin-bottom: 12px; }
+.partner-desc { color: var(--text-muted); font-size: 15px; line-height: 1.6; margin-bottom: 25px; min-height: 50px; }
+
+.btn-partner {
+    background: #9146FF; color: #fff; padding: 12px 24px; border-radius: 30px; 
+    text-decoration: none; font-weight: 700; font-size: 15px; display: inline-flex; 
+    align-items: center; gap: 8px; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(145, 70, 255, 0.3);
+}
+.btn-partner:hover { transform: scale(1.05); box-shadow: 0 8px 20px rgba(145, 70, 255, 0.5); background: #a25fff; }
 
 /* ==========================================
-   10. TOUTE L'OPTIMISATION MOBILE (Écrans < 768px)
+   11. TOUTE L'OPTIMISATION MOBILE (Écrans < 768px)
 ========================================== */
 @media screen and (max-width: 768px) {
     
-    html, body {
-        font-size: 14px;
-    }
+    html, body { font-size: 14px; }
+    body { padding-top: 60px; }
+    main { padding: 10px; }
 
-    body {
-        padding-top: 60px; /* Aligné sur la taille de la nouvelle barre mobile */
-    }
+    /* --- En-tête & Signature --- */
+    .site-header { display: flex; flex-direction: column; align-items: center; padding: 10px 0 0 0; margin-bottom: 0; }
+    .signature-container { position: relative; top: 0; left: 0; text-align: center; width: 100%; margin-top: 15px; }
+    .signature-img { height: auto; max-width: 130px; }
+    .logo-wrapper { margin: 10px auto; width: 150px; height: 150px; }
 
-    main {
-        padding: 10px;
-    }
+    .main-title { font-size: 2.2rem; }
+    .sub-title { font-size: 1rem; margin-bottom: 15px; }
 
-    /* --- Rangement Signature & En-tête mobile --- */
-    .site-header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 10px 0 0 0;
-        margin-bottom: 0;
-    }
+    /* Boutons compacts */
+    .hero-buttons { gap: 8px; margin-bottom: 25px; }
+    .hero-buttons .btn-main, .hero-buttons .btn-secondary { padding: 8px 12px; font-size: 0.85rem; }
 
-    .signature-container {
-        position: relative; /* Quitte le mode absolu pour se ranger sagement */
-        top: 0;
-        left: 0;
-        text-align: center;
-        width: 100%;
-        margin-top: 15px; /* Évite de coller la barre noire */
-    }
-
-    .signature-img {
-        height: auto;
-        max-width: 130px; /* Taille réduite parfaite pour smartphone */
-    }
-
-    /* Redimensionnement et calage du logo sous la signature */
-    .logo-wrapper { 
-        margin: 10px auto; 
-        width: 150px; 
-        height: 150px; 
-    }
-
-    .main-title {
-        font-size: 2.2rem;
-    }
-
-    .sub-title {
-        font-size: 1rem;
-        margin-bottom: 15px;
-    }
-
-    /* Boutons d'accueil plus compacts */
-    .hero-buttons {
-        gap: 8px;
-        margin-bottom: 25px;
-    }
-    
-    .hero-buttons .btn-main, 
-    .hero-buttons .btn-secondary {
-        padding: 8px 12px;
-        font-size: 0.85rem;
-    }
-
-    /* --- Menu Déroulant Fixé Tout en Haut --- */
+    /* --- Menu Déroulant Mobile --- */
     .navbar-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 9999;
-        padding: 8px;
-        background: rgba(15, 15, 15, 0.95);
-        backdrop-filter: blur(8px);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        margin-bottom: 0;
+        position: fixed; top: 0; left: 0; width: 100%; z-index: 9999; padding: 8px;
+        background: rgba(15, 15, 15, 0.95); backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 0;
     }
-
     .navbar-container::before {
-        content: "☰ MENU";
-        display: block;
-        text-align: center;
-        padding: 8px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        color: #fff;
-        font-weight: 700;
-        font-size: 0.85rem;
-        border-radius: 6px;
-        cursor: pointer;
+        content: "☰ MENU"; display: block; text-align: center; padding: 8px;
+        background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #fff; font-weight: 700; font-size: 0.85rem; border-radius: 6px; cursor: pointer;
     }
-
     .navbar {
-        display: none; 
-        flex-direction: column;
-        gap: 5px;
-        padding: 10px;
-        background: rgba(20, 20, 20, 0.98);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 6px;
-        margin-top: 5px;
-        width: 100%;
+        display: none; flex-direction: column; gap: 5px; padding: 10px;
+        background: rgba(20, 20, 20, 0.98); border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 6px; margin-top: 5px; width: 100%;
     }
+    .navbar-container:hover .navbar, .navbar-container:active .navbar { display: flex; }
+    .nav-item a { padding: 8px; font-size: 0.85rem; border-radius: 4px; text-align: center; width: 100%; }
 
-    .navbar-container:hover .navbar,
-    .navbar-container:active .navbar {
-        display: flex; 
-    }
+    /* Grille Réseaux Sociaux */
+    .social-glass-box { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; padding: 8px; }
+    .social-card { padding: 8px; font-size: 0.8rem; gap: 6px; }
+    .social-card:last-child { grid-column: span 2; }
 
-    .nav-item a {
-        padding: 8px;
-        font-size: 0.85rem;
-        border-radius: 4px;
-        text-align: center;
-        width: 100%;
-    }
+    /* Vidéos */
+    .media-grids { display: flex; flex-direction: column; gap: 15px; }
+    .video-responsive { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 6px; }
+    .video-responsive iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+    .video-title { font-size: 0.9rem; }
 
-    /* Mini-grille pour les Réseaux Sociaux */
-    .social-glass-box {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
-        padding: 8px;
-    }
-
-    .social-card {
-        padding: 8px;
-        font-size: 0.8rem;
-        gap: 6px;
-    }
-
-    .social-card:last-child {
-        grid-column: span 2;
-    }
-
-    /* Vidéos l'une sous l'autre */
-    .media-grids {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .video-responsive {
-        position: relative;
-        padding-bottom: 56.25%;
-        height: 0;
-        overflow: hidden;
-        border-radius: 6px;
-    }
-
-    .video-responsive iframe {
-        position: absolute;
-        top: 0; left: 0; width: 100%; height: 100%;
-    }
-
-    .video-title {
-        font-size: 0.9rem;
-    }
+    /* Ajustement Partenaires Mobile */
+    .partners-grid { display: flex; flex-direction: column; gap: 20px; }
+    .partner-card { padding: 25px; }
+    .partner-avatar-wrapper { width: 100px; height: 100px; }
+    .partner-card h3 { font-size: 22px; }
+    .partner-desc { font-size: 14px; margin-bottom: 18px; }
 }
