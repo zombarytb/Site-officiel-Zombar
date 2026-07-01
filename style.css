@@ -148,7 +148,6 @@ body::before {
 ========================================= */
 .planning-container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
 .planning-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 900px; margin: 0 auto; }
-/* Centre le dernier élément (dimanche) au milieu des 3 colonnes */
 .planning-grid .day-card:last-child { grid-column: 2; }
 
 .day-card { background: rgba(255, 255, 255, 0.03); padding: 25px; border-radius: 20px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05); position: relative; overflow: hidden; transition: transform 0.3s ease;}
@@ -161,18 +160,19 @@ body::before {
 .game-name { font-weight: 700; color: #fff; margin-bottom: 5px; }
 .game-type { font-size: 14px; color: var(--steam-blue); margin-bottom: 10px; text-transform: uppercase; }
 .time-slot { font-size: 14px; color: var(--text-muted); background: rgba(0,0,0,0.3); padding: 4px 8px; border-radius: 6px; display: inline-block; }
+
 /* =========================================
    9. PAGES SIMPLES (SETUP, CONTACT, BOUTIQUE...)
 ========================================= */
 .page-content {
     max-width: 800px;
-    margin: 40px auto; /* Centre la boîte au milieu de l'écran */
+    margin: 40px auto;
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 24px;
     padding: 50px;
-    text-align: center; /* Centre le texte à l'intérieur */
+    text-align: center;
     box-shadow: 0 20px 40px rgba(0,0,0,0.3);
 }
 
@@ -181,28 +181,52 @@ body::before {
     line-height: 1.8;
     color: var(--text-muted);
 }
+
 /* ==========================================
-   OPTIMISATION MOBILE (Écrans de moins de 768px)
-   ========================================== */
-/* ==========================================
-   AFFICHAGE SIMPLIFIÉ ET COMPACT POUR MOBILE
-   ========================================== */
-/* ==========================================
-   AFFICHAGE ULTRA SIMPLE & MENU DÉROULANT MOBILE
-   ========================================== */
-/* ==========================================
-   AFFICHAGE MOBILE ET MENU DÉROULANT EN HAUT
-   ========================================== */
+   10. TOUTE L'OPTIMISATION MOBILE (Écrans < 768px)
+========================================== */
 @media screen and (max-width: 768px) {
     
-    /* 1. Réduction globale de la police et marges */
     html, body {
         font-size: 14px;
     }
 
+    body {
+        padding-top: 60px; /* Aligné sur la taille de la nouvelle barre mobile */
+    }
+
     main {
         padding: 10px;
-        margin-top: 60px; /* Crée un espace pour que le menu du haut ne cache pas ton logo */
+    }
+
+    /* --- Rangement Signature & En-tête mobile --- */
+    .site-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0 0 0;
+        margin-bottom: 0;
+    }
+
+    .signature-container {
+        position: relative; /* Quitte le mode absolu pour se ranger sagement */
+        top: 0;
+        left: 0;
+        text-align: center;
+        width: 100%;
+        margin-top: 15px; /* Évite de coller la barre noire */
+    }
+
+    .signature-img {
+        height: auto;
+        max-width: 130px; /* Taille réduite parfaite pour smartphone */
+    }
+
+    /* Redimensionnement et calage du logo sous la signature */
+    .logo-wrapper { 
+        margin: 10px auto; 
+        width: 150px; 
+        height: 150px; 
     }
 
     .main-title {
@@ -214,10 +238,10 @@ body::before {
         margin-bottom: 15px;
     }
 
-    /* 2. Boutons d'accueil plus compacts */
+    /* Boutons d'accueil plus compacts */
     .hero-buttons {
         gap: 8px;
-        margin-bottom: 15px;
+        margin-bottom: 25px;
     }
     
     .hero-buttons .btn-main, 
@@ -226,21 +250,20 @@ body::before {
         font-size: 0.85rem;
     }
 
-    /* 3. PROPULSION DU MENU TOUT EN HAUT DE L'ÉCRAN */
+    /* --- Menu Déroulant Fixé Tout en Haut --- */
     .navbar-container {
-        position: fixed; /* Fixe le menu en haut, même quand on scroll ! */
+        position: fixed;
         top: 0;
         left: 0;
         width: 100%;
-        z-index: 9999; /* Reste toujours au-dessus du reste du site */
+        z-index: 9999;
         padding: 8px;
-        background: rgba(15, 15, 15, 0.9); /* Fond sombre semi-transparent */
+        background: rgba(15, 15, 15, 0.95);
         backdrop-filter: blur(8px);
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         margin-bottom: 0;
     }
 
-    /* Le bouton MENU ☰ en haut au centre */
     .navbar-container::before {
         content: "☰ MENU";
         display: block;
@@ -255,7 +278,6 @@ body::before {
         cursor: pointer;
     }
 
-    /* Le menu qui se déroule juste en dessous du bouton */
     .navbar {
         display: none; 
         flex-direction: column;
@@ -265,9 +287,9 @@ body::before {
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 6px;
         margin-top: 5px;
+        width: 100%;
     }
 
-    /* Action au clic/tactile pour dérouler */
     .navbar-container:hover .navbar,
     .navbar-container:active .navbar {
         display: flex; 
@@ -278,9 +300,10 @@ body::before {
         font-size: 0.85rem;
         border-radius: 4px;
         text-align: center;
+        width: 100%;
     }
 
-    /* 4. Réseaux Sociaux en mini-grille */
+    /* Mini-grille pour les Réseaux Sociaux */
     .social-glass-box {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -298,7 +321,7 @@ body::before {
         grid-column: span 2;
     }
 
-    /* 5. Vidéos l'une sous l'autre */
+    /* Vidéos l'une sous l'autre */
     .media-grids {
         display: flex;
         flex-direction: column;
@@ -322,22 +345,3 @@ body::before {
         font-size: 0.9rem;
     }
 }
-/* Ajustement et rangement de la signature sur mobile */
-    .signature-container {
-        padding: 5px 0;
-        margin-bottom: 0;
-        text-align: center;
-    }
-
-    .signature-img {
-        max-width: 140px; /* Réduit la taille pour qu'elle rentre proprement */
-        height: auto;
-        display: inline-block;
-        margin-top: 10px; /* Crée un petit espace sous la barre de menu fixe */
-    }
-
-    /* Décale légèrement le bloc logo vers le bas pour laisser de la place */
-    .logo-wrapper {
-        margin-top: 5px;
-        margin-bottom: 10px;
-    }
