@@ -5,18 +5,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const discordWebhookUrl = "REMPLACE_PAR_TON_URL_PROXY";
     const discordGuildId = "1342602738604773436";
 
+    // =========================================================================
+    // A. GESTION DU PRELOADER (SI PRÉSENT SUR LA PAGE)
+    // =========================================================================
     const preloader = document.querySelector(".cyber-preloader");
-
-    // =========================================================================
-    // A. GESTION DU PRELOADER & TRANSITIONS DE PAGE
-    // =========================================================================
-    document.body.style.overflow = "hidden";
-
     if (preloader) {
+        document.body.style.overflow = "hidden";
         setTimeout(() => {
             preloader.classList.add("fade-out");
             document.body.style.overflow = "";
         }, 1300);
+    } else {
+        document.body.style.overflow = "";
     }
 
     const localLinks = document.querySelectorAll(".nav-links a, .hero-action-group a");
@@ -33,6 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     setTimeout(() => {
                         window.location.href = href;
                     }, 450);
+                } else {
+                    window.location.href = href;
                 }
             }
         });
@@ -48,8 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }, {
-        threshold: 0.1,
-        rootMargin: "0px 0px -40px 0px"
+        threshold: 0.05,
+        rootMargin: "0px 0px -20px 0px"
     });
 
     document.querySelectorAll(".scroll-reveal").forEach(element => {
@@ -197,7 +199,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const twitchBadge = document.getElementById("twitch-live-badge");
 
     if (twitchBadge) {
-        // Passe à 'true' lors de tes lives Twitch
         let isLive = false; 
 
         if (isLive) {
