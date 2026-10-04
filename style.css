@@ -260,4 +260,233 @@ body::before {
     .partner-avatar-wrapper { width: 100px; height: 100px; }
     .partner-card h3 { font-size: 22px; }
     .partner-desc { font-size: 14px; margin-bottom: 18px; }
+    /* =========================================================================
+   1. BADGE "EN LIVE" DYNAMIQUE
+   ========================================================================= */
+.live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 1px;
+    margin-top: 12px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(8px);
+}
+
+.live-badge.offline {
+    background: rgba(255, 255, 255, 0.08);
+    color: #888;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.live-badge.offline .pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #666;
+}
+
+.live-badge.is-live {
+    background: rgba(255, 0, 55, 0.2);
+    color: #ff3355;
+    border: 1px solid #ff3355;
+    box-shadow: 0 0 15px rgba(255, 0, 85, 0.4);
+}
+
+.live-badge.is-live .pulse-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #ff0037;
+    box-shadow: 0 0 10px #ff0037;
+    animation: livePulse 1.2s infinite alternate;
+}
+
+@keyframes livePulse {
+    0% { transform: scale(0.8); opacity: 0.5; }
+    100% { transform: scale(1.3); opacity: 1; }
+}
+
+/* =========================================================================
+   2. GALERIE CLIPS & HIGHLIGHTS
+   ========================================================================= */
+.section-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    font-size: 22px;
+    color: #fff;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: 1px;
+}
+
+.highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.clip-card {
+    background: rgba(18, 18, 24, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.clip-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--zombar-yellow, #ffd700);
+}
+
+.clip-thumbnail {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+}
+
+.clip-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.clip-card:hover .clip-thumbnail img {
+    transform: scale(1.05);
+}
+
+.play-btn-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 24px;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.3s ease, background 0.3s ease;
+}
+
+.clip-card:hover .play-btn-overlay {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.clip-info {
+    padding: 15px;
+}
+
+.clip-info h3 {
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.clip-info p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* =========================================================================
+   3. WIDGET DISCORD INTERACTIF
+   ========================================================================= */
+.discord-widget-card {
+    background: rgba(88, 101, 242, 0.08);
+    border: 1px solid rgba(88, 101, 242, 0.3);
+    border-radius: 16px;
+    padding: 24px;
+    backdrop-filter: blur(10px);
+}
+
+.discord-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.discord-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.discord-logo-icon {
+    font-size: 36px;
+    color: #5865F2;
+}
+
+.discord-brand h3 {
+    color: #fff;
+    font-size: 18px;
+    margin: 0;
+}
+
+.discord-status-text {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+.discord-online-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #23a55a;
+    box-shadow: 0 0 8px #23a55a;
+}
+
+.btn-discord-join {
+    background: #5865F2;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-discord-join:hover {
+    background: #4752C4;
+    transform: scale(1.03);
+}
+
+.discord-members-preview {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    overflow-x: auto;
+    padding-bottom: 5px;
+}
+
+.discord-avatar-item {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid #5865F2;
+    object-fit: cover;
+}
 }

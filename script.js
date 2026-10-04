@@ -1,24 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
     // =========================================================================
-    // CONFIGURATION — remplace par ton vrai domaine en production
+    // CONFIGURATION
     // =========================================================================
-    // ⚠️ SÉCURITÉ : Le webhook Discord NE DOIT PAS être dans le code client.
-    // Remplace cette URL par l'endpoint de ton propre proxy/backend pour éviter
-    // que n'importe qui puisse l'utiliser pour spammer ton Discord.
     const discordWebhookUrl = "REMPLACE_PAR_TON_URL_PROXY";
+    const discordGuildId = "1342602738604773436";
 
     const preloader = document.querySelector(".cyber-preloader");
 
     // =========================================================================
-    // A. MANAGEMENT DU PRELOADER & TRANSITIONS FLUIDES
+    // A. GESTION DU PRELOADER & TRANSITIONS DE PAGE
     // =========================================================================
-    // Bloque le scroll pendant le chargement
     document.body.style.overflow = "hidden";
 
     if (preloader) {
         setTimeout(() => {
             preloader.classList.add("fade-out");
-            // Réactive le scroll une fois le preloader caché
             document.body.style.overflow = "";
         }, 1300);
     }
@@ -69,13 +65,11 @@ document.addEventListener("DOMContentLoaded", () => {
             return response.json();
         })
         .then(data => {
-            // --- Injection du prochain live ---
             const nextLiveEl = document.getElementById("next-live-text");
             if (nextLiveEl && data.nextLiveDate) {
                 nextLiveEl.textContent = data.nextLiveDate;
             }
 
-            // --- Injection des compteurs de réseaux sociaux ---
             if (data.counters) {
                 const counterMap = {
                     twitch:  document.querySelector(".twitch-border .network-counter span"),
@@ -90,7 +84,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
 
-            // --- Génération dynamique du planning hebdomadaire ---
             const weeklyGrid = document.getElementById("weekly-grid");
             if (weeklyGrid && data.weeklySchedule) {
                 weeklyGrid.innerHTML = "";
@@ -108,21 +101,18 @@ document.addEventListener("DOMContentLoaded", () => {
                         <div class="day-card-body">${item.text}</div>
                     `;
                     weeklyGrid.appendChild(card);
-
-                    // Active le scroll-reveal sur les nouvelles cartes
                     revealObserver.observe(card);
                 });
             }
         })
         .catch(err => {
             console.warn("planning.json non disponible :", err.message);
-            // Valeur de repli si le JSON est absent
             const nextLiveEl = document.getElementById("next-live-text");
             if (nextLiveEl) nextLiveEl.textContent = "Consulte le Discord pour les dates !";
         });
 
     // =========================================================================
-    // D. EXPÉDITION DU FORMULAIRE DE SUGGESTIONS VIA WEBHOOK DISCORD
+    // D. ENVOI DU FORMULAIRE DE CONTACT/SUGGESTIONS
     // =========================================================================
     const suggestionForm = document.getElementById("suggestion-form");
     const formFeedback = document.getElementById("form-feedback");
@@ -157,30 +147,96 @@ document.addEventListener("DOMContentLoaded", () => {
                 body: JSON.stringify(discordMessage)
             })
             .then(response => {
-                if (!response.ok) throw new Error("Le serveur distant a renvoyé un code d'erreur.");
+                if (!response.ok) throw new Error("Erreur réseau");
 
                 formFeedback.innerHTML = `
                     <div class="terminal-success-box">
-                        <div><i class="fa-solid fa-check"></i> <strong>[SUCCESS] TRANSMISSION REÇUE ET ENCRYPTÉE.</strong></div>
-                        <div style="font-size: 13px; margin-top: 5px; color: rgba(0, 255, 102, 0.7);">
-                            &gt; Données transmises au quartier général sur Discord.<br>
-                            &gt; Statut : OK. Merci pour ton implication !
-                        </div>
+                        <div><i class="fa-solid fa-check"></i> <strong>[SUCCESS] TRANSMISSION ENVOYÉE.</strong></div>
                     </div>
                 `;
                 suggestionForm.reset();
             })
             .catch(error => {
-                console.error("Erreur de transmission :", error);
+                console.error("Erreur :", error);
                 formFeedback.innerHTML = `
-                    <div class="terminal-success-box" style="border-color: #ff3333; color: #ff3333; background: rgba(255,51,51,0.03);">
-                        <div><i class="fa-solid fa-circle-xmark"></i> <strong>[CRITICAL ERROR] TRANSACTION INTERROMPUE.</strong></div>
-                        <div style="font-size: 13px; margin-top: 5px;">
-                            &gt; Le serveur de réception a refusé le flux. Vérifie ta connexion Internet.
-                        </div>
+                    <div class="terminal-success-box" style="border-color: #ff3333; color: #ff3333;">
+                        <div><i class="fa-solid fa-circle-xmark"></i> <strong>[ERREUR] ÉCHEC DE LA TRANSMISSION.</strong></div>
                     </div>
                 `;
             });
         });
+    }
+
+    // =========================================================================
+    // E. EFFET CONFETTIS SUR CROWN/TOTAL ABONNÉS
+    // =========================================================================
+    const totalBtn = document.getElementById("total-subs-btn");
+
+    if (totalBtn) {
+        totalBtn.addEventListener("click", () => {
+            if (typeof confetti === "function") {
+                confetti({
+                    particleCount: 110,
+                    spread: 80,
+                    origin: { y: 0.6 },
+                    colors: ['#33ff00', '#ff6600', '#ffd700', '#00f2fe']
+                });
+            }
+
+            totalBtn.style.transition = "transform 0.15s ease";
+            totalBtn.style.transform = "scale(1.15) rotate(-3deg)";
+            setTimeout(() => {
+                totalBtn.style.transform = "scale(1) rotate(0deg)";
+            }, 150);
+        });
+    }
+
+    // =========================================================================
+    // F. STATUT TWITCH DYNAMIQUE (BADGE LIVE)
+    // =========================================================================
+    const twitchBadge = document.getElementById("twitch-live-badge");
+
+    if (twitchBadge) {
+        // Passe à 'true' lors de tes lives Twitch
+        let isLive = false; 
+
+        if (isLive) {
+            twitchBadge.classList.remove("offline");
+            twitchBadge.classList.add("is-live");
+            twitchBadge.querySelector(".live-text").textContent = "EN LIVE SUR TWITCH";
+        }
+    }
+
+    // =========================================================================
+    // G. RECUPERATION EN TEMPS RÉEL DU WIDGET DISCORD
+    // =========================================================================
+    const countEl = document.getElementById("discord-online-count");
+    const membersListEl = document.getElementById("discord-members-list");
+
+    if (countEl && discordGuildId) {
+        fetch(`https://discord.com/api/guilds/${discordGuildId}/widget.json`)
+            .then(res => res.json())
+            .then(data => {
+                if (data && data.presence_count !== undefined) {
+                    countEl.textContent = data.presence_count;
+
+                    if (membersListEl && data.members) {
+                        membersListEl.innerHTML = "";
+                        data.members.slice(0, 10).forEach(member => {
+                            if (member.avatar_url) {
+                                const img = document.createElement("img");
+                                img.src = member.avatar_url;
+                                img.alt = member.username;
+                                img.title = member.username;
+                                img.className = "discord-avatar-item";
+                                membersListEl.appendChild(img);
+                            }
+                        });
+                    }
+                }
+            })
+            .catch(() => {
+                countEl.textContent = "50+";
+            });
     }
 });
