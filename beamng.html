@@ -14,6 +14,108 @@
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Urbanist:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css?v=11">
+
+    <style>
+        .mods-category-selector {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+
+        .cat-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            padding: 12px 22px;
+            border-radius: 10px;
+            font-family: var(--font-primary);
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cat-btn:hover, .cat-btn.active {
+            background: var(--steam-blue);
+            color: var(--dark-bg);
+            border-color: var(--steam-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+        }
+
+        .mod-panel {
+            display: none;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .mod-panel.active-panel {
+            display: grid;
+        }
+
+        .mod-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 15px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .mod-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .mod-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .mod-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .mod-desc {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.4;
+        }
+
+        .btn-download-mod {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: rgba(51, 255, 0, 0.12);
+            color: var(--zombar-green);
+            border: 1px solid var(--zombar-green);
+            padding: 10px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 13px;
+            transition: all 0.2s ease;
+            margin-top: 10px;
+        }
+
+        .btn-download-mod:hover {
+            background: var(--zombar-green);
+            color: var(--dark-bg);
+            box-shadow: 0 0 12px rgba(51, 255, 0, 0.4);
+        }
+    </style>
 </head>
 <body>
 
@@ -32,7 +134,7 @@
     <main>
         <div class="page-header">
             <h1 class="page-title">Zone BeamNG</h1>
-            <p class="page-description">Configurations, Mods recommandés et défis</p>
+            <p class="page-description">Sélecteur de mods, configurations et téléchargements</p>
         </div>
 
         <div class="navbar-container">
@@ -50,19 +152,129 @@
         </div>
 
         <section class="section-container">
-            <div class="grid-cards">
-                <div class="glass-card">
-                    <div class="card-title"><i class="fa-solid fa-download card-icon"></i> Mes Mods Favoris</div>
-                    <p style="color: rgba(255,255,255,0.7); font-size: 14px;">Retrouve la liste des cartes et véhicules utilisés pendant les streams.</p>
+            <h2 class="section-title"><i class="fa-solid fa-cubes"></i> Sélection de Mods</h2>
+
+            <div class="mods-category-selector">
+                <button class="cat-btn active" onclick="switchCategory('realisme', this)">
+                    <i class="fa-solid fa-gauge-high"></i> Pour plus de réalisme
+                </button>
+                <button class="cat-btn" onclick="switchCategory('fun', this)">
+                    <i class="fa-solid fa-face-grin-tears"></i> Pour plus de fun
+                </button>
+                <button class="cat-btn" onclick="switchCategory('compromis', this)">
+                    <i class="fa-solid fa-scale-balanced"></i> Le compromis parfait
+                </button>
+            </div>
+
+            <!-- Catégorie 1 : Réalisme -->
+            <div id="panel-realisme" class="mod-panel active-panel">
+                <div class="mod-card">
+                    <div>
+                        <div class="mod-header">
+                            <i class="fa-solid fa-car-burst card-icon"></i>
+                            <div class="mod-title">Realistic Damage & Physics Pack</div>
+                        </div>
+                        <p class="mod-desc" style="margin-top: 10px;">Améliore la déformation des châssis et la gestion physique des collisions à haute vitesse.</p>
+                    </div>
+                    <a href="https://www.beamng.com/resources/" target="_blank" class="btn-download-mod">
+                        <i class="fa-solid fa-download"></i> Télécharger le mod
+                    </a>
                 </div>
-                <div class="glass-card">
-                    <div class="card-title"><i class="fa-solid fa-sliders card-icon"></i> Config FFB / Volant</div>
-                    <p style="color: rgba(255,255,255,0.7); font-size: 14px;">Paramètres de retour de force optimisés pour la conduite réaliste.</p>
+
+                <div class="mod-card">
+                    <div>
+                        <div class="mod-header">
+                            <i class="fa-solid fa-volume-high card-icon"></i>
+                            <div class="mod-title">Ultra Engine Sounds Mod</div>
+                        </div>
+                        <p class="mod-desc" style="margin-top: 10px;">Refonte complète du son des moteurs, retours de pot et bruitages d'échappement.</p>
+                    </div>
+                    <a href="https://www.beamng.com/resources/" target="_blank" class="btn-download-mod">
+                        <i class="fa-solid fa-download"></i> Télécharger le mod
+                    </a>
+                </div>
+            </div>
+
+            <!-- Catégorie 2 : Fun -->
+            <div id="panel-fun" class="mod-panel">
+                <div class="mod-card">
+                    <div>
+                        <div class="mod-header">
+                            <i class="fa-solid fa-rocket card-icon"></i>
+                            <div class="mod-title">Jet Thrusters & Ram Plow</div>
+                        </div>
+                        <p class="mod-desc" style="margin-top: 10px;">Ajoute des réacteurs surpuissants et des lames pour pulvériser le trafic.</p>
+                    </div>
+                    <a href="https://www.beamng.com/resources/" target="_blank" class="btn-download-mod">
+                        <i class="fa-solid fa-download"></i> Télécharger le mod
+                    </a>
+                </div>
+
+                <div class="mod-card">
+                    <div>
+                        <div class="mod-header">
+                            <i class="fa-solid fa-volcano card-icon"></i>
+                            <div class="mod-title">Giant Mega Ramp Map</div>
+                        </div>
+                        <p class="mod-desc" style="margin-top: 10px;">Carte dédiée aux sauts gigantesques et cascades extrêmes.</p>
+                    </div>
+                    <a href="https://www.beamng.com/resources/" target="_blank" class="btn-download-mod">
+                        <i class="fa-solid fa-download"></i> Télécharger le mod
+                    </a>
+                </div>
+            </div>
+
+            <!-- Catégorie 3 : Compromis Parfait -->
+            <div id="panel-compromis" class="mod-panel">
+                <div class="mod-card">
+                    <div>
+                        <div class="mod-header">
+                            <i class="fa-solid fa-traffic-light card-icon"></i>
+                            <div class="mod-title">Enhanced Traffic & AI Smart Drivers</div>
+                        </div>
+                        <p class="mod-desc" style="margin-top: 10px;">Un trafic réaliste mais dynamique pour créer des poursuites mémorables sans gâcher la conduite.</p>
+                    </div>
+                    <a href="https://www.beamng.com/resources/" target="_blank" class="btn-download-mod">
+                        <i class="fa-solid fa-download"></i> Télécharger le mod
+                    </a>
+                </div>
+
+                <div class="mod-card">
+                    <div>
+                        <div class="mod-header">
+                            <i class="fa-solid fa-sliders card-icon"></i>
+                            <div class="mod-title">Custom Career & Config Overhaul</div>
+                        </div>
+                        <p class="mod-desc" style="margin-top: 10px;">Équilibre parfait entre réglages réalistes de suspensions et puissance accessible.</p>
+                    </div>
+                    <a href="https://www.beamng.com/resources/" target="_blank" class="btn-download-mod">
+                        <i class="fa-solid fa-download"></i> Télécharger le mod
+                    </a>
                 </div>
             </div>
         </section>
     </main>
 
+    <script>
+        function switchCategory(catId, btnElement) {
+            document.querySelectorAll('.mod-panel').forEach(panel => {
+                panel.classList.remove('active-panel');
+            });
+
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            const targetPanel = document.getElementById('panel-' + catId);
+            if (targetPanel) {
+                targetPanel.classList.add('active-panel');
+            }
+
+            if (btnElement) {
+                btnElement.classList.add('active');
+            }
+        }
+    </script>
     <script src="script.js?v=11"></script>
 </body>
 </html>
