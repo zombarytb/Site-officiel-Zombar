@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À Propos & FAQ - ZOMBAR</title>
+
+    <link rel="icon" type="image/jpeg" href="logo.jpg?v=11">
+    <link rel="apple-touch-icon" href="logo.jpg?v=11">
+    <link rel="shortcut icon" href="logo.jpg?v=11">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Urbanist:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=11">
+
+    <style>
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .about-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 25px;
+        }
+
+        .about-card h3 {
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .about-card h3 i {
+            color: var(--zombar-green);
+        }
+
+        .about-card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 18px 22px;
+            width: 100%;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            font-family: var(--font-primary);
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            padding: 0 22px;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.5;
+            font-size: 14px;
+            border-top: 1px solid transparent;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding: 0 22px 18px 22px;
+            border-top-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+            color: var(--zombar-green);
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glow-overlay">
+        <div class="glow-green"></div>
+        <div class="glow-orange"></div>
+        <div class="glow-blue"></div>
+    </div>
+
+    <header class="site-header">
+        <div class="signature-container">
+            <a href="index.html"><img src="signature.png" alt="Signature Zombar" class="signature-img"></a>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <h1 class="page-title">À Propos & FAQ</h1>
+            <p class="page-description">Découvre l'histoire de la chaîne et les réponses aux questions fréquentes</p>
+        </div>
+
+        <div class="navbar-container">
+            <nav>
+                <ul class="navbar">
+                    <li class="nav-item"><a href="index.html">Accueil</a></li>
+                    <li class="nav-item"><a href="jeux.html">Jeux</a></li>
+                    <li class="nav-item"><a href="planning.html">Planning</a></li>
+                    <li class="nav-item"><a href="setup.html">Setup</a></li>
+                    <li class="nav-item"><a href="beamng.html">BeamNG</a></li>
+                    <li class="nav-item"><a href="a-propos.html" class="active-nav">À Propos</a></li>
+                    <li class="nav-item"><a href="mediakit.html">Pro / Sponsor</a></li>
+                    <li class="nav-item"><a href="suggestions.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <section class="section-container">
+            <h2 class="section-title"><i class="fa-solid fa-user-ninja"></i> Mon Parcours</h2>
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3><i class="fa-solid fa-gamepad"></i> Mes Débuts</h3>
+                    <p>J'ai commencé très jeune en filmant l'écran de ma tablette, sans publier. Après de premiers essais peu concluants, c'est en 2022 avec mon compte GeForce NOW que la chaîne a réellement débuté !</p>
+                </div>
+
+                <div class="about-card">
+                    <h3><i class="fa-solid fa-heart"></i> L'Esprit de la Chaîne</h3>
+                    <p>L'objectif numéro 1 : diffuser de la <strong>good vibes</strong> ! On joue principalement à <strong>BeamNG.drive</strong> et <strong>Minecraft</strong>, avec un rendez-vous spécial le samedi soir sur un jeu hors du commun.</p>
+                </div>
+
+                <div class="about-card">
+                    <h3><i class="fa-solid fa-calendar-check"></i> Le Rythme</h3>
+                    <p>Chaque semaine : 1 vidéo TikTok, 1 vidéo YouTube complète, et entre 3 et 6 heures de live Twitch pour passer de bons moments en direct avec la communauté.</p>
+                </div>
+            </div>
+
+            <h2 class="section-title" style="margin-top: 50px;"><i class="fa-solid fa-circle-question"></i> Foire Aux Questions (FAQ)</h2>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Pourquoi le pseudo "Zombar" ?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    Bonne question ! Pour être tout à fait honnête, il n'y a pas d'histoire secrète derrière : je trouvais juste que ça rendait super bien !
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    C'est quoi ton setup et ton matos ?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    Pour connaître tout mon équipement (PC, composants, volant, périphériques), tu peux directement consulter la <a href="setup.html" style="color: var(--zombar-green); text-decoration: underline;">page Setup dédiée</a> !
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Quels sont tes projets pour les prochains mois ?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    Devenir toujours plus fort dans mon contenu, m'améliorer sur les jeux qu'on ponce en live, et être toujours plus proche de ma communauté !
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Sur quels jeux peut-on te trouver le samedi soir ?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    Le samedi soir est réservé aux jeux un peu "hors du commun" : des jeux indés, du multi insolite, ou des découvertes pépites choisies avec la communauté.
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function toggleFaq(button) {
+            const item = button.parentElement;
+            item.classList.toggle('active');
+        }
+    </script>
+    <script src="script.js?v=11"></script>
+</body>
+</html>
