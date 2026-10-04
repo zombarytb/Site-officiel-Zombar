@@ -517,3 +517,130 @@ main {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* =========================================================================
+   STYLES HARMONISÉS DES SOUS-PAGES
+   ========================================================================= */
+.page-header {
+    text-align: center;
+    margin: 10px 0 20px;
+}
+
+.page-title {
+    font-family: var(--font-title);
+    font-size: 36px;
+    color: #fff;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.page-description {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 5px;
+}
+
+.grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.glass-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 20px;
+    backdrop-filter: blur(12px);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-icon {
+    color: var(--zombar-green);
+}
+
+.tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--steam-blue);
+    border: 1px solid rgba(0, 242, 254, 0.2);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.form-input, .form-select, .form-textarea {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 12px;
+    color: #fff;
+    font-family: var(--font-primary);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: var(--steam-blue);
+}
+
+.btn-submit {
+    background: var(--zombar-green);
+    color: var(--dark-bg);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(51, 255, 0, 0.4);
+}
+
+.shop-price {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--zombar-yellow);
+    margin: 10px 0;
+}

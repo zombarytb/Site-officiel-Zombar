@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZOMBAR - Le Royaume</title>
 
-    <!-- Icônes / Favicon pour raccourci mobile et onglet -->
     <link rel="icon" type="image/jpeg" href="logo.jpg?v=11">
     <link rel="apple-touch-icon" href="logo.jpg?v=11">
     <link rel="shortcut icon" href="logo.jpg?v=11">
 
-    <!-- Script pour l'effet confettis -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,7 +27,7 @@
 
     <header class="site-header">
         <div class="signature-container">
-            <img src="signature.png" alt="Signature Zombar" class="signature-img">
+            <a href="index.html"><img src="signature.png" alt="Signature Zombar" class="signature-img"></a>
         </div>
     </header>
 
@@ -52,7 +50,6 @@
             </a>
         </div>
 
-        <!-- Navigation principale + Badge Live -->
         <div class="navbar-container">
             <nav>
                 <ul class="navbar">
@@ -66,48 +63,40 @@
                 </ul>
             </nav>
 
-            <!-- Badge Live dynamique -->
             <a href="https://twitch.tv/zombarytb" target="_blank" class="live-badge offline" id="twitch-live-badge">
                 <span class="pulse-dot"></span>
                 <span class="live-text">OFFLINE</span>
             </a>
         </div>
 
-        <!-- Section Statistiques Réseaux -->
         <div class="social-stats-wrapper">
             <div class="social-glass-box">
                 
-                <!-- Instagram -->
                 <a href="https://instagram.com" target="_blank" class="social-card">
                     <div class="social-icon-box"><i class="fa-brands fa-instagram"></i></div>
                     <div class="social-count">12</div>
                 </a>
 
-                <!-- Twitch -->
                 <a href="https://twitch.tv/zombarytb" target="_blank" class="social-card">
                     <div class="social-icon-box"><i class="fa-brands fa-twitch"></i></div>
                     <div class="social-count">119</div>
                 </a>
 
-                <!-- TikTok -->
                 <a href="https://www.tiktok.com/@zombarytb" target="_blank" class="social-card">
                     <div class="social-icon-box"><i class="fa-brands fa-tiktok"></i></div>
                     <div class="social-count">279</div>
                 </a>
 
-                <!-- Discord -->
                 <a href="https://discord.gg/CXp7zteBKh" target="_blank" class="social-card">
                     <div class="social-icon-box"><i class="fa-brands fa-discord"></i></div>
                     <div class="social-count">50</div>
                 </a>
 
-                <!-- YouTube -->
                 <a href="https://www.youtube.com/@zambar4487" target="_blank" class="social-card">
                     <div class="social-icon-box"><img src="logo.jpg" alt="Logo" class="custom-logo-net"></div>
                     <div class="social-count">320</div>
                 </a>
 
-                <!-- Carte Total Communauté (Interactive) -->
                 <div class="social-card total-community-card" id="total-subs-btn">
                     <div class="social-icon-box crown-icon">
                         <i class="fa-solid fa-crown"></i>
@@ -119,7 +108,6 @@
             </div>
         </div>
 
-        <!-- SECTION : GALERIE CLIPS & HIGHLIGHTS -->
         <section class="section-container scroll-reveal">
             <h2 class="section-title"><i class="fa-solid fa-clapperboard"></i> Clips & Highlights</h2>
             <div class="highlights-grid">
@@ -153,7 +141,6 @@
             </div>
         </section>
 
-        <!-- SECTION : WIDGET DISCORD INTERACTIF -->
         <section class="section-container scroll-reveal">
             <div class="discord-widget-card">
                 <div class="discord-header">
@@ -171,9 +158,7 @@
                         Rejoindre le Discord
                     </a>
                 </div>
-                <div class="discord-members-preview" id="discord-members-list">
-                    <!-- Avatars générés dynamiquement par le JS -->
-                </div>
+                <div class="discord-members-preview" id="discord-members-list"></div>
             </div>
         </section>
 
